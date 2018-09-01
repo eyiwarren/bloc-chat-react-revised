@@ -1,5 +1,5 @@
-.App {
-  text-align: center;
+#App {
+  margin-left: 10px;
 }
 
 .App-logo {
@@ -16,13 +16,25 @@
 
 .App-title {
   font-size: 1.5em;
+
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#sidebar {
+  background: LightGray;
+  height: 750px;
+  width: 150px;
+  position: fixed;
+  width: 25%;
+  margin-left: 10px;
+}
+
+h1#subtitle {
+  font-family: 'Times New Roman', Verdana;
+  text-align: left;
+  padding-left: 10px;
+
 }

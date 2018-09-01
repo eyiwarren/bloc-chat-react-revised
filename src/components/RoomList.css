@@ -1,0 +1,33 @@
+#room-component {
+  padding: 2px;
+  text-align: left;
+}
+
+
+ #room-list  {
+    width: 60%;
+    list-style-type: none;
+    padding-left: 5px;
+
+}
+
+
+  #room-list button {
+    border: hidden;
+}
+
+
+#room-list .room-name {
+  font-size: 15px;
+  font-style: Lucida Console;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.create-room-text > form > input[type=text]{
+    width: 50%;
+    background-color: whitesmoke;
+    height: 20px;
+    border: none;
+    margin-left: 5px;
+}
