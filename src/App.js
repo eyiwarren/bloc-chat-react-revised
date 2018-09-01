@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 
 
+
 var config = {
     apiKey: "AIzaSyDT5moRPuBtWcSK77p_WqTkIH70Ssb2F9k",
     authDomain: "bloc-chat-f0dab.firebaseapp.com",
@@ -19,8 +20,11 @@ class App extends Component {
     super(props);
     this.state = {
     activeRoom: null,
+
     };
   }
+
+
 
   setRoom(room) {
   this.setState({activeRoom: room});

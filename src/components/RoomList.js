@@ -19,15 +19,15 @@ createRoom(e) {
     if (!this.state.newRoomName) { return }
     this.roomsRef.push({
       name: this.state.newRoomName
-    });
-    this.setState({ newRoomName: ''  });
-  }
+      });
+      this.setState({ newRoomName: ''  });
+}
 
   handleChange(e) {
     this.setState({ newRoomName: e.target.value })
   }
 
-  componentDidMount() {
+   componentDidMount() {
      this.roomsRef.on('child_added', snapshot => {
      const room = snapshot.val();
      room.key = snapshot.key;
@@ -42,6 +42,7 @@ createRoom(e) {
           <ul id="room-list">
           {this.state.rooms.map( (room, key) => (
           <li key={room.key}>
+
           <button onClick={ () => this.props.setRoom(room) } className="room-name">{ room.name }</button>
         </li>
         ))}
