@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
-
+import MessageList from './components/MessageList';
+import './components/MessageList.css';
 
 
 var config = {
@@ -20,11 +21,8 @@ class App extends Component {
     super(props);
     this.state = {
     activeRoom: null,
-
     };
   }
-
-
 
   setRoom(room) {
   this.setState({activeRoom: room});
@@ -37,6 +35,7 @@ class App extends Component {
           <h1 id="subtitle">Bloc Chat</h1>
           <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom.bind(this)} />
         </aside>
+        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user} />
       </div>
     );
   }
