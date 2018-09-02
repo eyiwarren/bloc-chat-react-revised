@@ -1,0 +1,6 @@
+.loginInfo {
+  grid-area: footer;
+  padding-bottom: 2rem;
+  padding-top: 0.25rem;
+  text-align: center;
+}

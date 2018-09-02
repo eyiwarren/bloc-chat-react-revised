@@ -8,7 +8,9 @@ class MessageList extends Component {
 			messages: [],
 			activeRoomMessages: [],
 			newMessageText: '',
-      username: 'Guest',
+      username: '',
+      content: '',
+      sentAt: '',
       roomId: '',
 		};
 		this.messagesRef = this.props.firebase.database().ref('messages');
@@ -43,14 +45,15 @@ class MessageList extends Component {
 			content: newMessageText,
 			sentAt: Date(),
 		  roomId: this.props.activeRoom,
-    username: this.state.username,
+      username: this.state.username
     });
   this.setState({ newMessageText: '' });
 }
 
-handleChange(event) {
+    handleChange(event) {
 		this.setState({newMessageText: event.target.value });
 	}
+
 
 	scrollToBottom() {
 		this.bottomOfMessages.scrollIntoView();
@@ -71,13 +74,14 @@ handleChange(event) {
       </div>
       </li>
     ))}
+    <div ref={thisDiv => (this.bottomOfMessages = thisDiv)} />
      </ul>
 
    <form id="create-message" onSubmit={ (e) => { e.preventDefault(); this.createMessage(this.state.newMessageText); } }>
-   <textarea value={ this.state.newMessageText } onChange={ this.handleChange.bind(this) }  name="newMessageText" placeholder="Post a message here"/>
-   <input type='submit'/>
+   <textarea value={ this.state.newMessageText } onChange={ this.handleChange.bind(this) }  name="newMessageText" placeholder=" Post a message here"/>
+   <input type='submit' value="Submit"/>
 	</form>
-<div ref={thisDiv => (this.bottomOfMessages = thisDiv)} />
+
 </main>
    );
  }
