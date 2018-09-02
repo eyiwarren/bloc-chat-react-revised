@@ -33,21 +33,21 @@ class App extends Component {
 
   setUser(user) {
     this.setState({user: user})
-    console.log(user);
+    
   }
 
   render() {
-  const activeUser = this.state.user === null ? 'Guest' : this.state.user.displayName;
+
     return (
           <div className="App">
           <div>
-          <User firebase={firebase} setUser={this.setUser.bind(this)} activeUser={activeUser} />
+          <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user} />
           </div>
           <aside id="sidebar">
           <h1 id="subtitle">Bloc Chat</h1>
-          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom.bind(this)} />
+          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom.bind(this)} user={this.state.user} />
         </aside>
-        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={activeUser} />
+        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user} />
 
       </div>
     );
