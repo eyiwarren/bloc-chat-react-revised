@@ -33,18 +33,20 @@ class MessageList extends Component {
 		this.messagesRef.on('child_added', snapshot => {
 			const message = snapshot.val();
 			message.key = snapshot.key;
-			this.setState({ messages: this.state.messages.concat( message ) });
+			this.setState({ messages: this.state.messages.concat( message ) },
+			() => {
 			this.activeRoomMessages(this.props.activeRoom);
 				this.scrollToBottom();
 			});
-	}
+	    });
+}
 
     createMessage(newMessageText) {
 		if (!this.props.activeRoom || !newMessageText) { return; }
 		this.messagesRef.push({
 			content: newMessageText,
 			sentAt: Date(),
-		  roomId: this.props.activeRoom,
+		  roomId: this.props.activeRoom.key,
       username: this.state.username
     });
   this.setState({ newMessageText: '' });
@@ -80,6 +82,7 @@ class MessageList extends Component {
    <form id="create-message" onSubmit={ (e) => { e.preventDefault(); this.createMessage(this.state.newMessageText); } }>
    <textarea value={ this.state.newMessageText } onChange={ this.handleChange.bind(this) }  name="newMessageText" placeholder=" Post a message here"/>
    <input type='submit' value="Submit"/>
+
 	</form>
 
 </main>

@@ -12,20 +12,15 @@ class User extends Component {
     }
 
     logIn() {
-            console.log("login called");
+
             const provider = new this.props.firebase.auth.GoogleAuthProvider();
-            this.props.firebase.auth().signInWithPopup(provider).then((result) => {
-               console.log("logged in");
-               const user = result.user;
-               this.props.setUser(user);
-        })
-    }
+            this.props.firebase.auth().signInWithPopup(provider);
+
+}
 
     logOut() {
-        this.props.firebase.auth().signOut().then((result) => {
-            console.log("logged out");
-            this.props.setUser(null);
-        })
+        this.props.firebase.auth().signOut();
+
     }
 
     componentDidMount() {
@@ -35,12 +30,14 @@ class User extends Component {
     }
 
     render() {
+    const str = this.props.user ? this.props.user.displayName.split(' ')[0] : 'Guest';
+      var chatuser = str.toUpperCase();
+
         return (
             <section>
                 <div className="greeting">
-                    <p>Welcome, {this.props.activeUser}!</p>
+                    <p>Welcome, { chatuser }!</p>
 
-                    {this.props.activeUser === 'Guest' ?
                         <button className="log-in" onClick={() => this.logIn()}>Log in</button>
                         :
                         <button className="log-out" onClick={() => this.logOut()}>Log out</button>
