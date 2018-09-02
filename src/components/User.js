@@ -40,7 +40,7 @@ class User extends Component {
                 <div className="greeting">
                     <p>Welcome, {this.props.activeUser}!</p>
 
-                    {this.props.activeUser === 'Guest' ?
+                    {this.props.user === 'Guest' ?
                         <button className="log-in" onClick={() => this.logIn()}>Log in</button>
                         :
                         <button className="log-out" onClick={() => this.logOut()}>Log out</button>

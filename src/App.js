@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   render() {
-    const activeUser = this.state.user === null ? 'Guest' : this.state.user.displayName;
+  const activeUser = this.state.user === null ? 'Guest' : this.state.user.displayName;
     return (
           <div className="App">
           <div>
