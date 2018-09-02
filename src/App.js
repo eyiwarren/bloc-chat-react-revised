@@ -4,6 +4,8 @@ import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
 import './components/MessageList.css';
+import User from './components/User';
+
 
 
 var config = {
@@ -21,6 +23,7 @@ class App extends Component {
     super(props);
     this.state = {
     activeRoom: null,
+    user: null
     };
   }
 
@@ -28,14 +31,24 @@ class App extends Component {
   this.setState({activeRoom: room});
   }
 
+  setUser(user) {
+    this.setState({user: user})
+    console.log(user);
+  }
+
   render() {
+    const activeUser = this.state.user === null ? 'Guest' : this.state.user.displayName;
     return (
-      <div className="App">
+          <div className="App">
+          <div>
+          <User firebase={firebase} setUser={this.setUser.bind(this)} activeUser={activeUser} />
+          </div>
           <aside id="sidebar">
           <h1 id="subtitle">Bloc Chat</h1>
           <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom.bind(this)} />
         </aside>
-        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user} />
+        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={activeUser} />
+
       </div>
     );
   }
