@@ -3,8 +3,9 @@
   background: white;
   left: 25%;
   width: 75%;
-  height: 100vh;
+  height: 80%;
   overflow: scroll;
+  display: grid;
 }
 h2.room-name {
   border-bottom: 2px solid hsla(44, 30%, 52%, 0.2);
@@ -12,13 +13,13 @@ h2.room-name {
   font-family: 'Pacifico', cursive;
   font-size: 1.5rem;
   margin: 0;
-  padding: 1rem 1rem 0.5rem;
+  padding: 0.5rem 1rem 0.5rem;
 }
 ul#message-list {
   padding: 1rem;
-  height: 82%;
-  margin-bottom: 0;
-  overflow: scroll;
+  height: 95%;
+  margin-bottom: 30;
+
 }
 
 #message-list li {
@@ -26,36 +27,30 @@ ul#message-list {
   font-size: 0.85rem;
   clear: both;
   overflow: hidden;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 #message-list li .display-name {
-  font-size: 0.7rem;
+  font-size: 0.95rem;
   font-weight: bold;
   color: #777;
   float: left;
-  width: 75%;
-}
-#message-list li .timeago {
-  font-size: 0.7rem;
-  font-style: italic;
-  color: hsl(0, 2%, 42%);
-  float: right;
-  text-align: right;
-  width: 14%;
-}
-#message-list li .content {
-  color: hsl(69, 40%, 20%);
-  display: inline-block;
-  width: 90%;
+  width: 175%;
 }
 
-#message-list li .remove {
+#message-list li .content {
+
   display: inline-block;
-  opacity: 0;
-  transform: translateY(-0.05rem);
-  color: #aaa;
+  width: 90%;
+  background-color: #f8f8ff;
+  padding-left: 5px;
 }
+
+#Time-posted {
+
+float: right;
+}
+
 #message-list li:hover .remove {
   opacity: 1;
 }
@@ -74,9 +69,10 @@ ul#message-list {
   border: 1px solid hsla(48, 50%, 63%, 0.5);
   box-sizing: border-box;
   font-size: 0.9rem;
-  margin: 0;
+  margin-top: 34px;
   padding: 0.33rem;
   width: 65%;
+
 }
 
 #create-message input[type="submit"] {

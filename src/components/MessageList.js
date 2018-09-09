@@ -36,18 +36,20 @@ class MessageList extends Component {
 			this.setState({ messages: this.state.messages.concat( message ) },
 			() => {
 			this.activeRoomMessages(this.props.activeRoom);
-				this.scrollToBottom();
+      this.scrollToBottom();
 			});
 	    });
+
 }
 
     createMessage(newMessageText) {
 		if (!this.props.activeRoom || !newMessageText) { return; }
+		var timestamp = new Date().toLocaleTimeString('en-US', { day: 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' });
 		this.messagesRef.push({
 			content: newMessageText,
-			sentAt: Date(),
+			sentAt: timestamp,
 		  roomId: this.props.activeRoom.key,
-      username: this.state.username
+      username: this.props.user ? this.props.user.displayName : 'Guest',
     });
   this.setState({ newMessageText: '' });
 }
@@ -70,13 +72,15 @@ class MessageList extends Component {
       <li key={message.key} >
 
       <div className="content">
-      {message.username}: {message.content }
+      <p className = "display-name">{message.username}</p>
+      <p><span>{message.content } </span>
+			<span id = "Time-posted">{ " " + message.sentAt}</span>
+			</p>
 
-      {" " + message.sentAt}
       </div>
       </li>
     ))}
-    <div ref={thisDiv => (this.bottomOfMessages = thisDiv)} />
+
      </ul>
 
    <form id="create-message" onSubmit={ (e) => { e.preventDefault(); this.createMessage(this.state.newMessageText); } }>
@@ -84,7 +88,7 @@ class MessageList extends Component {
    <input type='submit' value="Submit"/>
 
 	</form>
-
+<div ref={thisDiv => (this.bottomOfMessages = thisDiv)} />
 </main>
    );
  }

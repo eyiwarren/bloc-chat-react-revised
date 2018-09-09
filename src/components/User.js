@@ -17,7 +17,6 @@ class User extends Component {
             this.props.firebase.auth().signInWithPopup(provider);
 
 }
-
     logOut() {
         this.props.firebase.auth().signOut();
 

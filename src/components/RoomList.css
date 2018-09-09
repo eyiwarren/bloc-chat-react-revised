@@ -5,11 +5,12 @@
 
 
  #room-list  {
+
     width: 60%;
     list-style-type: none;
     padding-left: 5px;
-
-}
+    margin-bottom: 1.5rem;
+  }
 
 
   #room-list button {
@@ -22,6 +23,9 @@
   font-style: Lucida Console;
   padding-top: 5px;
   padding-bottom: 5px;
+  display: inline-block;
+  margin-bottom: 0.95rem;
+
 }
 
 .create-room-text > form > input[type=text]{
